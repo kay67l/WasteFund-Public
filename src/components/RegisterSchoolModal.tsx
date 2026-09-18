@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { supabase } from '../lib/supabase'
 
 interface Props { onClose: () => void }
 
@@ -31,13 +32,24 @@ export default function RegisterSchoolModal({ onClose }: Props) {
     setError('')
 
     try {
-      // Will be wired to Supabase — for now logs to console
-      await new Promise(r => setTimeout(r, 1200)) // simulate request
-      console.log('Registration submitted:', form)
+      const { error } = await supabase
+        .from('registrations')
+        .insert({
+          school_name: form.school_name,
+          region: form.region,
+          district: form.district,
+          contact_name: form.contact_name,
+          contact_role: form.contact_role,
+          contact_email: form.contact_email,
+          contact_phone: form.contact_phone,
+          how_heard: form.how_heard,
+        })
+
+      if (error) throw error
       setStatus('success')
-    } catch {
+    } catch (err) {
       setStatus('error')
-      setError('Something went wrong. Please try again or email us directly.')
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again or email us directly.')
     }
   }
 

@@ -1,3 +1,5 @@
+import type { } from 'react'
+
 interface HeroProps {
   onRegisterSchool: () => void
   onPartnerInquiry: () => void
@@ -6,75 +8,54 @@ interface HeroProps {
 export default function Hero({ onRegisterSchool, onPartnerInquiry }: HeroProps) {
   return (
     <section style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      position: 'relative',
-      overflow: 'hidden',
+      minHeight: 'auto',
       paddingTop: '6rem',
+      paddingBottom: '3rem',
+      background: 'var(--paper)',
     }}>
-      {/* Background orbs */}
-      <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-      }}>
-        <div style={{
-          position: 'absolute', top: '10%', left: '5%',
-          width: 500, height: 500,
-          background: 'radial-gradient(circle, rgba(22,163,74,0.12) 0%, transparent 70%)',
-          borderRadius: '50%',
-          animation: 'float 8s ease-in-out infinite',
-        }} />
-        <div style={{
-          position: 'absolute', bottom: '10%', right: '5%',
-          width: 400, height: 400,
-          background: 'radial-gradient(circle, rgba(234,179,8,0.08) 0%, transparent 70%)',
-          borderRadius: '50%',
-          animation: 'float 10s ease-in-out infinite reverse',
-        }} />
-        {/* Grid pattern */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
-          maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 80%)',
-        }} />
-      </div>
+      <div className="container">
+        {/* Newspaper masthead */}
+        <div className="masthead">
+          <div className="masthead-ear">
+            <h1 className="newspaper-name h-display h-display-1" style={{ margin: '0.5rem 0' }}>
+              Waste<span className="accent">fund</span>
+            </h1>
+          </div>
+          <p className="masthead-tagline">
+            Ghana's Student-Led Waste Recovery Network
+          </p>
+          <p className="dateline">
+            {new Date().toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            {' · '}
+            Kumasi, Ashanti Region
+          </p>
+          <div className="newspaper-header-rule" style={{ marginTop: '1rem' }}>
+            <div className="line-left" />
+            <div className="center-mark" />
+            <div className="line-right" />
+          </div>
+        </div>
 
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: 760 }}>
-
-          {/* Eyebrow badge */}
-          <div style={{ marginBottom: '1.5rem', animation: 'fadeInUp 0.5s ease forwards' }}>
+        {/* Main headline area */}
+        <div style={{ maxWidth: 720, margin: '2.5rem auto 0' }}>
+          {/* Eyebrow */}
+          <div style={{ marginBottom: '1.25rem' }}>
             <span className="badge badge-green">
               <span>🌱</span>
-              Ghana's Student-Led Waste Recovery Network
+              Pilot Launch — Ashanti Region
             </span>
           </div>
 
-          {/* Headline */}
-          <h1
-            className="font-display"
-            style={{
-              fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-              fontWeight: 900,
-              lineHeight: 1.08,
-              marginBottom: '1.5rem',
-              animation: 'fadeInUp 0.6s 0.1s ease both',
-            }}
-          >
+          {/* Main headline */}
+          <h1 className="h-display h-display-1" style={{ marginBottom: '1.25rem', animation: 'fadeInUp 0.5s ease forwards' }}>
             Schools collect waste.{' '}
-            <span className="text-gradient">Schools earn money.</span>
+            <span style={{ color: 'var(--green)' }}>
+              Schools earn money.
+            </span>
           </h1>
 
-          {/* Sub-headline */}
-          <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-            color: 'var(--slate-400)',
-            lineHeight: 1.7,
-            maxWidth: 600,
-            marginBottom: '2.5rem',
-            animation: 'fadeInUp 0.6s 0.2s ease both',
-          }}>
+          {/* Lead paragraph */}
+          <p className="lead" style={{ marginBottom: '2rem', animation: 'fadeInUp 0.5s 0.1s ease both' }}>
             Wastefund connects Ghanaian high schools with recycling companies.
             Schools sort and store recyclable waste. Recyclers collect it. Schools receive
             a direct revenue share — no middleman fees, no paperwork overhead.
@@ -82,8 +63,10 @@ export default function Hero({ onRegisterSchool, onPartnerInquiry }: HeroProps) 
 
           {/* CTAs */}
           <div style={{
-            display: 'flex', gap: '1rem', flexWrap: 'wrap',
-            animation: 'fadeInUp 0.6s 0.3s ease both',
+            display: 'flex',
+            gap: '0.875rem',
+            flexWrap: 'wrap',
+            animation: 'fadeInUp 0.5s 0.2s ease both',
           }}>
             <button className="btn btn-primary btn-lg" onClick={onRegisterSchool} id="hero-register-cta">
               Register Your School
@@ -94,10 +77,13 @@ export default function Hero({ onRegisterSchool, onPartnerInquiry }: HeroProps) 
             </button>
           </div>
 
-          {/* Trust indicators */}
+          {/* Trust indicators — newspaper stat style */}
           <div style={{
-            display: 'flex', gap: '2.5rem', marginTop: '3.5rem', flexWrap: 'wrap',
-            animation: 'fadeInUp 0.6s 0.4s ease both',
+            display: 'flex',
+            gap: '2.5rem',
+            marginTop: '2.5rem',
+            flexWrap: 'wrap',
+            animation: 'fadeInUp 0.5s 0.3s ease both',
           }}>
             {[
               { label: 'Pilot Target', value: '5 Schools', note: 'Ashanti Region' },
@@ -106,23 +92,46 @@ export default function Hero({ onRegisterSchool, onPartnerInquiry }: HeroProps) 
             ].map(stat => (
               <div key={stat.label}>
                 <div style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '1.75rem',
-                  fontWeight: 800,
-                  color: 'var(--green-400)',
+                  fontFamily: 'var(--font-headline)',
+                  fontSize: 'clamp(1.3rem, 2.5vw, 1.75rem)',
+                  fontWeight: 900,
+                  color: 'var(--ink)',
                   lineHeight: 1,
                 }}>
                   {stat.value}
                 </div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--slate-500)', marginTop: '0.25rem' }}>
+                <div style={{
+                  fontFamily: 'var(--font-ui)',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--ink-3)',
+                  marginTop: '0.4rem',
+                }}>
                   {stat.label}
                 </div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--slate-600)' }}>{stat.note}</div>
+                <div style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.8rem',
+                  color: 'var(--ink-4)',
+                  marginTop: '0.2rem',
+                  fontStyle: 'italic',
+                }}>
+                  {stat.note}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   )
 }

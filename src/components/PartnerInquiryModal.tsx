@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { supabase } from '../lib/supabase'
 
 interface Props { onClose: () => void }
 type FormState = 'idle' | 'submitting' | 'success' | 'error'
@@ -26,12 +27,24 @@ export default function PartnerInquiryModal({ onClose }: Props) {
     setStatus('submitting')
     setError('')
     try {
-      await new Promise(r => setTimeout(r, 1200))
-      console.log('Partner inquiry submitted:', form)
+      const { error } = await supabase
+        .from('partner_inquiries')
+        .insert({
+          company_name: form.company_name,
+          company_type: form.company_type,
+          contact_name: form.contact_name,
+          contact_role: form.contact_role,
+          contact_email: form.contact_email,
+          contact_phone: form.contact_phone,
+          operating_regions: form.operating_regions,
+          message: form.message,
+        })
+
+      if (error) throw error
       setStatus('success')
-    } catch {
+    } catch (err) {
       setStatus('error')
-      setError('Something went wrong. Please try again.')
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
     }
   }
 
