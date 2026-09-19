@@ -1,119 +1,184 @@
-interface ForSchoolsProps { onRegisterSchool: () => void }
+import type { FC } from 'react'
 
-export default function ForSchools({ onRegisterSchool }: ForSchoolsProps) {
+interface ForSchoolsProps {
+  onRegisterSchool: () => void
+}
+
+const ForSchools: FC<ForSchoolsProps> = ({ onRegisterSchool }) => {
   const benefits = [
     {
-      icon: '💵',
+      check: (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ),
       title: 'Direct Revenue to Your School',
       desc: '60% of each collection\'s value goes directly to the school account. Not a grant with conditions. Not a prize. Earned income from waste you were already generating.',
     },
     {
-      icon: '📉',
+      check: (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ),
       title: 'Lower Waste Management Costs',
       desc: 'Recyclable waste is removed on a schedule at no cost to the school. Less waste means fewer skip-hire trips. In some cases, this saves schools money directly.',
     },
     {
-      icon: '📲',
+      check: (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ),
       title: 'Simple Coordinator Dashboard',
       desc: 'One school coordinator gets access to the Wastefund ops system. Log collection batches, view earnings history, and track upcoming pickups — no technical skill required.',
     },
     {
-      icon: '🏆',
+      check: (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ),
       title: 'Impact Recognition',
       desc: 'Schools are listed on Wastefund\'s public impact page by total waste diverted from landfill. First schools in the pilot get founding member status.',
     },
     {
-      icon: '🎓',
+      check: (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ),
       title: 'Curriculum Integration',
       desc: 'Optional: Wastefund provides lesson plan resources that link waste collection data to environmental science and economics curricula.',
     },
     {
-      icon: '🤝',
+      check: (
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      ),
       title: 'No Lock-In',
       desc: 'Pilot participation has a one-term trial period. If it doesn\'t work for your school, you\'re not locked in. We earn your continued participation.',
     },
   ]
 
   return (
-    <section id="for-schools" className="section" style={{ background: 'rgba(15,23,42,0.5)' }}>
+    <section id="for-schools" className="section benefits-section">
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'start' }}>
-
-          {/* Left: header and CTA */}
-          <div style={{ position: 'sticky', top: '7rem' }}>
-            <div className="section-label">
-              <span>🏫</span> For Schools
-            </div>
-            <h2 className="section-title font-display">
+        <div className="benefits-grid">
+          {/* Left */}
+          <div className="benefits-left">
+            <div className="benefits-label">For Schools</div>
+            <h2 className="benefits-title">
               Your school generates waste every day.
               <br />
-              <span className="text-gradient">It should generate income too.</span>
+              <span style={{ color: 'var(--green-600)' }}>It should generate income too.</span>
             </h2>
-            <div className="divider" />
-            <p className="section-subtitle">
-              Wastefund asks for one coordinator, a few collection bins, and a willingness to try.
-              We handle the logistics, the recycler relationship, and the payout.
-            </p>
-
-            <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'rgba(22,163,74,0.07)', border: '1px solid rgba(22,163,74,0.2)', borderRadius: 'var(--radius-lg)' }}>
-              <div style={{ fontSize: '0.8rem', color: 'var(--green-400)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
-                Pilot Terms (Ashanti Region)
-              </div>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {[
-                  'Open to SHS, SHTS, and technical schools',
-                  'First 5 schools — founding cohort',
-                  'One-term trial, no lock-in',
-                  'Coordinator onboarding provided',
-                ].map(item => (
-                  <li key={item} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', fontSize: '0.875rem', color: 'var(--slate-300)' }}>
-                    <span style={{ color: 'var(--green-400)', marginTop: '0.1rem' }}>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="benefits-list">
+              {benefits.map((b, i) => (
+                <div key={i} className="benefit-item">
+                  <div className="benefit-check" style={{ color: 'var(--green-600)' }}>{b.check}</div>
+                  <div className="benefit-text">
+                    <strong>{b.title}</strong>
+                    <span>{b.desc}</span>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            <button
-              className="btn btn-primary btn-lg"
-              style={{ marginTop: '2rem', width: '100%', justifyContent: 'center' }}
-              onClick={onRegisterSchool}
-              id="for-schools-cta"
-            >
+            <button className="btn btn-primary btn-lg benefits-cta" onClick={onRegisterSchool} id="for-schools-cta">
               Register Your School
-              <span>→</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
           </div>
 
-          {/* Right: benefits grid */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            {benefits.map((b, i) => (
-              <div key={i} className="card" style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
-                <div style={{
-                  fontSize: '1.75rem', flexShrink: 0,
-                  width: 48, height: 48,
-                  background: 'rgba(22,163,74,0.1)',
-                  borderRadius: 'var(--radius-md)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  {b.icon}
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.4rem' }}>{b.title}</h3>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--slate-400)', lineHeight: 1.6 }}>{b.desc}</p>
-                </div>
+          {/* Right: image */}
+          <div className="benefits-right">
+            <div className="benefits-image">
+              <img
+                src="https://images.unsplash.com/photo-1772419186959-fdb8cc37e149?w=600&h=520&fit=crop&auto=format"
+                alt="Students in a classroom learning about waste management and sustainability"
+                loading="lazy"
+              />
+              <div className="benefits-image-caption">
+                <span className="benefits-image-label">Ashanti Region Schools</span>
+                <span className="benefits-image-sub">Pilot participant classrooms</span>
               </div>
-            ))}
+            </div>
           </div>
+        </div>
+
+        {/* Pilot terms box */}
+        <div className="pilot-terms">
+          <div className="pilot-terms-label">Pilot Terms — Ashanti Region</div>
+          <ul>
+            {[
+              'Open to SHS, SHTS, and technical schools',
+              'First 5 schools — founding cohort',
+              'One-term trial, no lock-in',
+              'Coordinator onboarding provided',
+            ].map(item => (
+              <li key={item}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          #for-schools > div > div { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-          #for-schools > div > div > div:first-child { position: static !important; }
+        .benefits-image {
+          border-radius: var(--radius-xl);
+          overflow: hidden;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+          position: relative;
         }
+        .benefits-image img {
+          width: 100%;
+          height: 420px;
+          object-fit: cover;
+        }
+        .benefits-image-caption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 1.5rem 1.5rem 1rem;
+          background: linear-gradient(transparent, rgba(0,0,0,0.5));
+          color: var(--white);
+        }
+        .benefits-image-label {
+          display: block;
+          font-family: var(--font-display);
+          font-size: 1rem;
+          font-weight: 700;
+        }
+        .benefits-image-sub {
+          display: block;
+          font-size: 0.78rem;
+          opacity: 0.8;
+          margin-top: 0.15rem;
+        }
+        .pilot-terms {
+          margin-top: 2.5rem;
+          padding: 1.25rem 1.5rem;
+          background: var(--green-50);
+          border: 1px solid var(--green-200);
+          border-radius: var(--radius-lg);
+          max-width: 480px;
+        }
+        .pilot-terms-label {
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: var(--green-700);
+          margin-bottom: 0.75rem;
+        }
+        .pilot-terms ul {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+        .pilot-terms li {
+          font-size: 0.875rem;
+          color: var(--ink-2);
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .pilot-terms svg { color: var(--green-600); flex-shrink: 0; }
       `}</style>
     </section>
   )
 }
+
+export default ForSchools

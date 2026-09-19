@@ -1,134 +1,67 @@
-interface FooterProps {
-  onRegisterSchool: () => void
-  onPartnerInquiry: () => void
-}
-
-export default function Footer({ onRegisterSchool, onPartnerInquiry }: FooterProps) {
+export default function Footer() {
   return (
-    <footer style={{
-      background: 'var(--slate-900)',
-      borderTop: '1px solid var(--border)',
-      paddingBlock: '4rem 2rem',
-    }}>
-      <div className="container">
-        {/* Top CTA */}
-        <div style={{
-          textAlign: 'center',
-          paddingBottom: '3.5rem',
-          borderBottom: '1px solid var(--border)',
-          marginBottom: '3rem',
-        }}>
-          <h2 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-            fontWeight: 900,
-            marginBottom: '1rem',
-          }}>
-            Ready to turn waste into value?
-          </h2>
-          <p style={{ color: 'var(--slate-400)', marginBottom: '2rem', maxWidth: 480, margin: '0 auto 2rem' }}>
-            Whether you're a school looking to earn from recyclable waste, or a recycling company
-            looking to expand school-sector sourcing — let's talk.
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="btn btn-primary btn-lg" onClick={onRegisterSchool}>
-              Register a School
-            </button>
-            <button className="btn btn-secondary btn-lg" onClick={onPartnerInquiry}>
-              Become a Partner
-            </button>
+    <footer className="footer">
+      {/* Brand */}
+      <div className="footer-brand">
+        <div className="footer-logo-wrap">
+          <a href="/" className="footer-logo">
+            Waste<span>fund</span>
+          </a>
+        </div>
+        <p className="footer-tagline">
+          Ghana's student-led waste recovery network. Connecting schools, students,
+          and recycling companies for a circular economy.
+        </p>
+        <div className="footer-social" style={{ marginTop: '1.5rem', justifyContent: 'center' }}>
+          <a href="#" aria-label="Twitter / X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="footer-nav">
+        <div className="footer-nav-group">
+          <div className="footer-nav-label">Programs</div>
+          <div className="footer-nav-links">
+            <a href="#for-schools">For Schools</a>
+            <a href="#for-partners">For Partners</a>
+            <a href="#programs">All Programs</a>
+            <a href="#waste-guide">Waste Guide</a>
           </div>
         </div>
-
-        {/* Footer links */}
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '3rem', marginBottom: '3rem' }}>
-          {/* Brand */}
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1rem' }}>
-              <div style={{
-                width: 32, height: 32,
-                background: 'linear-gradient(135deg, #22c55e, #16a34a)',
-                borderRadius: '8px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1rem',
-              }}>
-                ♻️
-              </div>
-              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.125rem' }}>
-                Waste<span style={{ color: 'var(--green-400)' }}>fund</span>
-              </span>
-            </div>
-            <p style={{ fontSize: '0.875rem', color: 'var(--slate-500)', lineHeight: 1.65, maxWidth: 280 }}>
-              Ghana's student-led waste recovery network. Connecting schools, students,
-              and recycling companies for a circular economy.
-            </p>
-            <p style={{ fontSize: '0.75rem', color: 'var(--slate-600)', marginTop: '1rem' }}>
-              Ashanti Region · Ghana
-            </p>
-          </div>
-
-          {/* Quick links */}
-          <div>
-            <h4 style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--slate-500)', marginBottom: '1rem' }}>
-              Navigate
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {['How It Works', 'For Schools', 'For Partners', 'Impact'].map(item => (
-                <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase().replace(/ /g, '-')}`}
-                    style={{ color: 'var(--slate-400)', textDecoration: 'none', fontSize: '0.9rem', transition: 'color 0.2s' }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--green-400)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--slate-400)')}
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 style={{ fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--slate-500)', marginBottom: '1rem' }}>
-              Contact
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              <li style={{ fontSize: '0.9rem', color: 'var(--slate-400)' }}>hello@wastefund.org</li>
-              <li style={{ fontSize: '0.9rem', color: 'var(--slate-400)' }}>Kumasi, Ashanti Region</li>
-            </ul>
-            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1.25rem' }}>
-              {['𝕏', 'in', 'f'].map(icon => (
-                <div key={icon} style={{
-                  width: 36, height: 36,
-                  background: 'var(--slate-800)',
-                  border: '1px solid var(--border)',
-                  borderRadius: 'var(--radius-sm)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '0.875rem',
-                  color: 'var(--slate-500)',
-                  cursor: 'pointer',
-                }}>
-                  {icon}
-                </div>
-              ))}
-            </div>
+        <div className="footer-nav-group">
+          <div className="footer-nav-label">About</div>
+          <div className="footer-nav-links">
+            <a href="#how-it-works">How It Works</a>
+            <a href="#impact">Impact</a>
+            <a href="#">Our Team</a>
+            <a href="#">Contact</a>
           </div>
         </div>
+        <div className="footer-nav-group">
+          <div className="footer-nav-label">Connect</div>
+          <div className="footer-nav-links">
+            <a href="mailto:hello@wastefund.org">hello@wastefund.org</a>
+            <a href="#">Kumasi, Ashanti Region</a>
+            <a href="#">Join Our Slack</a>
+          </div>
+        </div>
+      </div>
 
-        {/* Bottom bar */}
-        <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          paddingTop: '1.5rem',
-          borderTop: '1px solid var(--border)',
-          flexWrap: 'wrap', gap: '1rem',
-        }}>
-          <p style={{ fontSize: '0.8rem', color: 'var(--slate-600)' }}>
-            © {new Date().getFullYear()} Wastefund. Independent initiative.
-          </p>
-          <p style={{ fontSize: '0.8rem', color: 'var(--slate-600)', fontStyle: 'italic' }}>
-            Pilot phase — Ashanti Region, Ghana.
-          </p>
+      {/* Bottom bar */}
+      <div className="footer-bottom">
+        <div className="footer-copy">
+          &copy; {new Date().getFullYear()} Wastefund. Independent initiative.
+        </div>
+        <div className="footer-badge">
+          Pilot phase — Ashanti Region, Ghana
         </div>
       </div>
     </footer>

@@ -2,9 +2,12 @@ import { useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import HowItWorks from './components/HowItWorks'
+import Programs from './components/Programs'
 import ForSchools from './components/ForSchools'
 import ForRecyclers from './components/ForRecyclers'
+import WasteGuide from './components/WasteGuide'
 import Impact from './components/Impact'
+import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import RegisterSchoolModal from './components/RegisterSchoolModal'
 import PartnerInquiryModal from './components/PartnerInquiryModal'
@@ -23,12 +26,15 @@ export default function App() {
       <main>
         <Hero onRegisterSchool={openRegister} onPartnerInquiry={openPartner} />
         <HowItWorks />
+        <Programs onRegisterSchool={openRegister} onPartnerInquiry={openPartner} />
         <ForSchools onRegisterSchool={openRegister} />
         <ForRecyclers onPartnerInquiry={openPartner} />
+        <WasteGuide />
         <Impact />
+        <Newsletter />
       </main>
 
-      <Footer onRegisterSchool={openRegister} onPartnerInquiry={openPartner} />
+      <Footer />
 
       {showRegister && <RegisterSchoolModal onClose={() => setShowRegister(false)} />}
       {showPartner && <PartnerInquiryModal onClose={() => setShowPartner(false)} />}

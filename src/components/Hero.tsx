@@ -1,137 +1,120 @@
-import type { } from 'react'
+import type { FC } from 'react'
 
 interface HeroProps {
   onRegisterSchool: () => void
   onPartnerInquiry: () => void
 }
 
-export default function Hero({ onRegisterSchool, onPartnerInquiry }: HeroProps) {
+export const Hero: FC<HeroProps> = ({ onRegisterSchool, onPartnerInquiry }) => {
   return (
-    <section style={{
-      minHeight: 'auto',
-      paddingTop: '6rem',
-      paddingBottom: '3rem',
-      background: 'var(--paper)',
-    }}>
+    <section className="hero">
+      {/* Background orbs */}
+      <div className="hero-bg-orb hero-bg-orb-1" />
+      <div className="hero-bg-orb hero-bg-orb-2" />
+      <div className="hero-grid" />
+
       <div className="container">
-        {/* Newspaper masthead */}
-        <div className="masthead">
-          <div className="masthead-ear">
-            <h1 className="newspaper-name h-display h-display-1" style={{ margin: '0.5rem 0' }}>
-              Waste<span className="accent">fund</span>
+        <div className="hero-content">
+          {/* Left: text */}
+          <div>
+            <div className="hero-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Pilot Launch — Ashanti Region, Ghana
+            </div>
+
+            <h1 className="hero-title">
+              Schools collect waste.
+              <span>Schools earn money.</span>
             </h1>
-          </div>
-          <p className="masthead-tagline">
-            Ghana's Student-Led Waste Recovery Network
-          </p>
-          <p className="dateline">
-            {new Date().toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-            {' · '}
-            Kumasi, Ashanti Region
-          </p>
-          <div className="newspaper-header-rule" style={{ marginTop: '1rem' }}>
-            <div className="line-left" />
-            <div className="center-mark" />
-            <div className="line-right" />
-          </div>
-        </div>
 
-        {/* Main headline area */}
-        <div style={{ maxWidth: 720, margin: '2.5rem auto 0' }}>
-          {/* Eyebrow */}
-          <div style={{ marginBottom: '1.25rem' }}>
-            <span className="badge badge-green">
-              <span>🌱</span>
-              Pilot Launch — Ashanti Region
-            </span>
-          </div>
+            <p className="hero-sub">
+              Wastefund connects Ghanaian high schools with recycling companies.
+              Schools sort and store recyclable waste. Recyclers collect it. Schools receive
+              a direct revenue share — no middleman fees, no paperwork overhead.
+            </p>
 
-          {/* Main headline */}
-          <h1 className="h-display h-display-1" style={{ marginBottom: '1.25rem', animation: 'fadeInUp 0.5s ease forwards' }}>
-            Schools collect waste.{' '}
-            <span style={{ color: 'var(--green)' }}>
-              Schools earn money.
-            </span>
-          </h1>
+            <div className="hero-cta-row">
+              <button className="btn-hero-primary" onClick={onRegisterSchool} id="hero-register-cta">
+                Register Your School
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+              <button className="btn-hero-secondary" onClick={onPartnerInquiry} id="hero-partner-cta">
+                Become a Recycling Partner
+              </button>
+            </div>
 
-          {/* Lead paragraph */}
-          <p className="lead" style={{ marginBottom: '2rem', animation: 'fadeInUp 0.5s 0.1s ease both' }}>
-            Wastefund connects Ghanaian high schools with recycling companies.
-            Schools sort and store recyclable waste. Recyclers collect it. Schools receive
-            a direct revenue share — no middleman fees, no paperwork overhead.
-          </p>
-
-          {/* CTAs */}
-          <div style={{
-            display: 'flex',
-            gap: '0.875rem',
-            flexWrap: 'wrap',
-            animation: 'fadeInUp 0.5s 0.2s ease both',
-          }}>
-            <button className="btn btn-primary btn-lg" onClick={onRegisterSchool} id="hero-register-cta">
-              Register Your School
-              <span>→</span>
-            </button>
-            <button className="btn btn-secondary btn-lg" onClick={onPartnerInquiry} id="hero-partner-cta">
-              Become a Recycling Partner
-            </button>
-          </div>
-
-          {/* Trust indicators — newspaper stat style */}
-          <div style={{
-            display: 'flex',
-            gap: '2.5rem',
-            marginTop: '2.5rem',
-            flexWrap: 'wrap',
-            animation: 'fadeInUp 0.5s 0.3s ease both',
-          }}>
-            {[
-              { label: 'Pilot Target', value: '5 Schools', note: 'Ashanti Region' },
-              { label: 'Est. Revenue/School', value: 'GHS 1,200+', note: 'Per term (pilot)' },
-              { label: 'Recycling Partner', value: 'Zoomlion', note: 'Targeted first partner' },
-            ].map(stat => (
-              <div key={stat.label}>
-                <div style={{
-                  fontFamily: 'var(--font-headline)',
-                  fontSize: 'clamp(1.3rem, 2.5vw, 1.75rem)',
-                  fontWeight: 900,
-                  color: 'var(--ink)',
-                  lineHeight: 1,
-                }}>
-                  {stat.value}
+            <div className="hero-stats">
+              {[
+                { label: 'Pilot Target', value: '5 Schools', note: 'Ashanti Region' },
+                { label: 'Est. Revenue/School', value: 'GHS 1,200+', note: 'Per term (pilot)' },
+                { label: 'Recycling Partner', value: 'Zoomlion', note: 'Targeted first partner' },
+              ].map(stat => (
+                <div key={stat.label} className="hero-stat">
+                  <div className="stat-value">{stat.value}</div>
+                  <div className="stat-label">{stat.label}</div>
+                  <div className="stat-note">{stat.note}</div>
                 </div>
-                <div style={{
-                  fontFamily: 'var(--font-ui)',
-                  fontSize: '0.7rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: 'var(--ink-3)',
-                  marginTop: '0.4rem',
-                }}>
-                  {stat.label}
-                </div>
-                <div style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.8rem',
-                  color: 'var(--ink-4)',
-                  marginTop: '0.2rem',
-                  fontStyle: 'italic',
-                }}>
-                  {stat.note}
-                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right: hero image */}
+          <div className="hero-image-wrap">
+            <div className="hero-image-inner">
+              <img
+                src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=600&h=500&fit=crop&auto=format"
+                alt="Green field representing Ghana's sustainable future through waste recovery"
+                loading="eager"
+              />
+              <div className="hero-image-caption">
+                <span className="hero-image-label">Ghana's green future</span>
+                <span className="hero-image-sub">Starts with what we throw away</span>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
-
       <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(12px); }
-          to   { opacity: 1; transform: translateY(0); }
+        .hero-image-wrap {
+          display: flex;
+          justify-content: center;
+        }
+        .hero-image-inner {
+          border-radius: var(--radius-xl);
+          overflow: hidden;
+          box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+          position: relative;
+          max-width: 400px;
+        }
+        .hero-image-inner img {
+          width: 100%;
+          height: 380px;
+          object-fit: cover;
+        }
+        .hero-image-caption {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding: 1.25rem 1.25rem 0.875rem;
+          background: linear-gradient(transparent, rgba(0,0,0,0.55));
+          color: var(--white);
+        }
+        .hero-image-label {
+          display: block;
+          font-family: var(--font-display);
+          font-size: 0.95rem;
+          font-weight: 700;
+        }
+        .hero-image-sub {
+          display: block;
+          font-size: 0.72rem;
+          opacity: 0.8;
+          margin-top: 0.15rem;
         }
       `}</style>
     </section>
   )
 }
+
+export default Hero
