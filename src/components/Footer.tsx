@@ -42,8 +42,8 @@ export default function Footer() {
             <div className="footer-col-links">
               <a href="#how-it-works">How It Works</a>
               <a href="#impact">Impact</a>
-              <a href="#">Our Team</a>
-              <a href="#">Contact</a>
+              <a href="#about">About Us</a>
+              <a href="mailto:hello@wastefund.org">Contact</a>
             </div>
           </div>
 
@@ -52,8 +52,8 @@ export default function Footer() {
             <div className="footer-col-label">Connect</div>
             <div className="footer-col-links">
               <a href="mailto:hello@wastefund.org">hello@wastefund.org</a>
-              <a href="#">Kumasi, Ashanti Region</a>
-              <a href="#">Join Our Slack</a>
+              <a href="#cta-banner">Kumasi, Ashanti Region</a>
+              <a href="#cta-banner">Join Our Slack</a>
             </div>
           </div>
         </div>

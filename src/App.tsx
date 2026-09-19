@@ -8,6 +8,9 @@ import ForRecyclers from './components/ForRecyclers'
 import WasteGuide from './components/WasteGuide'
 import Impact from './components/Impact'
 import Newsletter from './components/Newsletter'
+import About from './components/About'
+import Testimonials from './components/Testimonials'
+import CtaBanner from './components/CtaBanner'
 import Footer from './components/Footer'
 import RegisterSchoolModal from './components/RegisterSchoolModal'
 import PartnerInquiryModal from './components/PartnerInquiryModal'
@@ -25,13 +28,16 @@ export default function App() {
 
       <main>
         <Hero onRegisterSchool={openRegister} onPartnerInquiry={openPartner} />
+        <About />
         <HowItWorks />
         <Programs onRegisterSchool={openRegister} onPartnerInquiry={openPartner} />
         <ForSchools onRegisterSchool={openRegister} />
         <ForRecyclers onPartnerInquiry={openPartner} />
         <WasteGuide />
         <Impact />
+        <Testimonials />
         <Newsletter />
+        <CtaBanner />
       </main>
 
       <Footer />
