@@ -24,18 +24,17 @@ const guides = [
 
 export default function WasteGuide() {
   return (
-    <section id="waste-guide" className="section guide-section">
+    <section id="waste-guide" className="section">
       <div className="container">
-        {/* Header */}
-        <div className="guide-header">
-          <div className="guide-label">Waste Guide</div>
-          <h2 className="guide-title">Practical resources for schools.</h2>
-          <p style={{ fontSize: '0.9rem', color: 'var(--ink-3)', maxWidth: 440, margin: '0.5rem auto 0' }}>
+        <div className="section-header">
+          <div className="section-number">06</div>
+          <div className="section-label">Waste Guide</div>
+          <h2 className="section-title">Practical resources for schools.</h2>
+          <p className="section-sub">
             Free downloadable guides to help your school start and run a waste recovery program.
           </p>
         </div>
 
-        {/* Cards */}
         <div className="guide-grid">
           {guides.map((g, i) => (
             <div key={i} className="guide-card">

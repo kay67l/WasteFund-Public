@@ -59,44 +59,39 @@ export default function RegisterSchoolModal({ onClose }: Props) {
         <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
 
         {status === 'success' ? (
-          <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>
-              Registration Received!
-            </h2>
-            <p style={{ color: 'var(--slate-400)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              We'll review your school's details and reach out to {form.contact_name || 'you'} at{' '}
-              <strong style={{ color: 'var(--green-400)' }}>{form.contact_email}</strong>{' '}
-              within 3–5 working days to discuss next steps.
+          <div className="success-wrap">
+            <div className="success-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+            </div>
+            <h2 className="success-title">Registration Received!</h2>
+            <p className="success-text">
+              We'll review your school's details and reach out to <strong>{form.contact_name || 'you'}</strong> at{' '}
+              <strong>{form.contact_email}</strong> within 3–5 working days to discuss next steps.
             </p>
             <button className="btn btn-primary" onClick={onClose}>Done</button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.35rem' }}>
-                Register Your School
-              </h2>
-              <p style={{ fontSize: '0.875rem', color: 'var(--slate-400)' }}>
-                Pilot spots are limited to 5 schools. We'll confirm eligibility and contact you within 3–5 days.
-              </p>
-            </div>
+          <form onSubmit={handleSubmit}>
+            <h2 className="modal-title">Register Your School</h2>
+            <p className="modal-sub">
+              Pilot spots are limited to 5 schools. We'll confirm eligibility and contact you within 3–5 days.
+            </p>
 
             <div className="form-group">
-              <label className="form-label">School Name *</label>
+              <label className="form-label">School Name <span className="required">*</span></label>
               <input className="form-input" required placeholder="e.g. Kumasi Academy" value={form.school_name} onChange={set('school_name')} />
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row">
               <div className="form-group">
-                <label className="form-label">School Type *</label>
+                <label className="form-label">School Type <span className="required">*</span></label>
                 <select className="form-select" required value={form.school_type} onChange={set('school_type')}>
                   <option value="">Select type</option>
                   {SCHOOL_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
               <div className="form-group">
-                <label className="form-label">Region *</label>
+                <label className="form-label">Region <span className="required">*</span></label>
                 <select className="form-select" required value={form.region} onChange={set('region')}>
                   <option value="">Select region</option>
                   {GHANA_REGIONS.map(r => <option key={r} value={r}>{r}</option>)}
@@ -109,25 +104,23 @@ export default function RegisterSchoolModal({ onClose }: Props) {
               <input className="form-input" placeholder="e.g. Kumasi Metro" value={form.district} onChange={set('district')} />
             </div>
 
-            <hr style={{ border: 'none', borderTop: '1px solid var(--border)' }} />
-            <p style={{ fontSize: '0.8rem', color: 'var(--slate-500)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              Contact Person
-            </p>
+            <hr className="form-divider" />
+            <div className="form-section-label">Contact Person</div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row">
               <div className="form-group">
-                <label className="form-label">Full Name *</label>
+                <label className="form-label">Full Name <span className="required">*</span></label>
                 <input className="form-input" required placeholder="Ms. Ama Asante" value={form.contact_name} onChange={set('contact_name')} />
               </div>
               <div className="form-group">
-                <label className="form-label">Role at School *</label>
+                <label className="form-label">Role at School <span className="required">*</span></label>
                 <input className="form-input" required placeholder="e.g. Assistant Headmistress" value={form.contact_role} onChange={set('contact_role')} />
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row">
               <div className="form-group">
-                <label className="form-label">Email Address *</label>
+                <label className="form-label">Email Address <span className="required">*</span></label>
                 <input className="form-input" type="email" required placeholder="contact@school.edu.gh" value={form.contact_email} onChange={set('contact_email')} />
               </div>
               <div className="form-group">
@@ -142,21 +135,18 @@ export default function RegisterSchoolModal({ onClose }: Props) {
             </div>
 
             {error && (
-              <p style={{ color: '#f87171', fontSize: '0.875rem', background: 'rgba(248,113,113,0.1)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                {error}
-              </p>
+              <div className="form-error">{error}</div>
             )}
 
             <button
-              className="btn btn-primary"
+              className="btn btn-primary submit-btn"
               type="submit"
               disabled={status === 'submitting'}
-              style={{ width: '100%', justifyContent: 'center', opacity: status === 'submitting' ? 0.7 : 1 }}
             >
               {status === 'submitting' ? 'Submitting…' : 'Submit Registration'}
             </button>
 
-            <p style={{ fontSize: '0.75rem', color: 'var(--slate-600)', textAlign: 'center' }}>
+            <p className="form-footer-note">
               We do not share your details with third parties. You'll only hear from us about your registration.
             </p>
           </form>

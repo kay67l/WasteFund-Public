@@ -23,22 +23,23 @@ const steps = [
   },
 ]
 
-export const HowItWorks: FC = () => {
+const HowItWorks: FC = () => {
   return (
     <section id="how-it-works" className="section">
       <div className="container">
-        <div className="section-head">
-          <div className="section-tag">How It Works</div>
-          <h2>
+        <div className="section-header">
+          <div className="section-number">01</div>
+          <div className="section-label">How It Works</div>
+          <h2 className="section-title">
             Four steps.{' '}
-            <span style={{ color: 'var(--green-600)' }}>Simple to run. Rigorous to track.</span>
+            <span style={{ color: 'var(--green-500)' }}>Simple to run. Rigorous to track.</span>
           </h2>
           <p className="section-sub">
             Every collection event is documented. Every payout is traceable.
           </p>
         </div>
 
-        <div className="features-grid">
+        <div className="hiw-grid">
           {steps.map((step) => (
             <div key={step.num} className="hiw-card">
               <div className="hiw-number">{step.num}</div>
@@ -48,48 +49,6 @@ export const HowItWorks: FC = () => {
           ))}
         </div>
       </div>
-
-      <style>{`
-        .section-head {
-          text-align: center;
-          margin-bottom: 1rem;
-        }
-        .section-tag {
-          display: inline-block;
-          font-size: 0.7rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.12em;
-          color: var(--green-600);
-          margin-bottom: 0.75rem;
-        }
-        .section-head h2 {
-          font-family: var(--font-display);
-          font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-          font-weight: 700;
-          color: var(--green-900);
-          margin-bottom: 0.75rem;
-        }
-        .section-sub {
-          font-size: 0.9rem;
-          color: var(--ink-3);
-          max-width: 480px;
-          margin: 0 auto;
-        }
-        .hiw-card { text-align: center; }
-        .hiw-number {
-          font-family: var(--font-display);
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: var(--green-200);
-          line-height: 1;
-          margin-bottom: 0.75rem;
-        }
-        .hiw-icon {
-          font-size: 1.6rem;
-          margin-bottom: 0.75rem;
-        }
-      `}</style>
     </section>
   )
 }

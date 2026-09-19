@@ -1,67 +1,70 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* Brand */}
-      <div className="footer-brand">
-        <div className="footer-logo-wrap">
-          <a href="/" className="footer-logo">
-            Waste<span>fund</span>
-          </a>
-        </div>
-        <p className="footer-tagline">
-          Ghana's student-led waste recovery network. Connecting schools, students,
-          and recycling companies for a circular economy.
-        </p>
-        <div className="footer-social" style={{ marginTop: '1.5rem', justifyContent: 'center' }}>
-          <a href="#" aria-label="Twitter / X">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="#" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-        </div>
-      </div>
+      <div className="container">
+        <div className="footer-inner">
+          {/* Brand */}
+          <div className="footer-col">
+            <a href="/" className="footer-logo-lg">
+              Waste<span>fund</span>
+            </a>
+            <p className="footer-tagline">
+              Ghana's student-led waste recovery network.
+              Connecting schools, students, and recycling companies for a circular economy.
+            </p>
+            <div className="footer-social">
+              <a href="#" aria-label="Twitter / X">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <a href="#" aria-label="LinkedIn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+            </div>
+          </div>
 
-      {/* Navigation */}
-      <div className="footer-nav">
-        <div className="footer-nav-group">
-          <div className="footer-nav-label">Programs</div>
-          <div className="footer-nav-links">
-            <a href="#for-schools">For Schools</a>
-            <a href="#for-partners">For Partners</a>
-            <a href="#programs">All Programs</a>
-            <a href="#waste-guide">Waste Guide</a>
+          {/* Programs */}
+          <div className="footer-col">
+            <div className="footer-col-label">Programs</div>
+            <div className="footer-col-links">
+              <a href="#for-schools">For Schools</a>
+              <a href="#for-partners">For Partners</a>
+              <a href="#programs">All Programs</a>
+              <a href="#waste-guide">Waste Guide</a>
+            </div>
           </div>
-        </div>
-        <div className="footer-nav-group">
-          <div className="footer-nav-label">About</div>
-          <div className="footer-nav-links">
-            <a href="#how-it-works">How It Works</a>
-            <a href="#impact">Impact</a>
-            <a href="#">Our Team</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-        <div className="footer-nav-group">
-          <div className="footer-nav-label">Connect</div>
-          <div className="footer-nav-links">
-            <a href="mailto:hello@wastefund.org">hello@wastefund.org</a>
-            <a href="#">Kumasi, Ashanti Region</a>
-            <a href="#">Join Our Slack</a>
-          </div>
-        </div>
-      </div>
 
-      {/* Bottom bar */}
-      <div className="footer-bottom">
-        <div className="footer-copy">
-          &copy; {new Date().getFullYear()} Wastefund. Independent initiative.
+          {/* About */}
+          <div className="footer-col">
+            <div className="footer-col-label">About</div>
+            <div className="footer-col-links">
+              <a href="#how-it-works">How It Works</a>
+              <a href="#impact">Impact</a>
+              <a href="#">Our Team</a>
+              <a href="#">Contact</a>
+            </div>
+          </div>
+
+          {/* Connect */}
+          <div className="footer-col">
+            <div className="footer-col-label">Connect</div>
+            <div className="footer-col-links">
+              <a href="mailto:hello@wastefund.org">hello@wastefund.org</a>
+              <a href="#">Kumasi, Ashanti Region</a>
+              <a href="#">Join Our Slack</a>
+            </div>
+          </div>
         </div>
-        <div className="footer-badge">
-          Pilot phase — Ashanti Region, Ghana
+
+        <div className="footer-bottom">
+          <div className="footer-copy">
+            &copy; {new Date().getFullYear()} Wastefund. Independent initiative.
+          </div>
+          <div className="footer-badge">
+            Pilot phase — Ashanti Region, Ghana
+          </div>
         </div>
       </div>
     </footer>

@@ -26,6 +26,7 @@ export default function PartnerInquiryModal({ onClose }: Props) {
     e.preventDefault()
     setStatus('submitting')
     setError('')
+
     try {
       const { error } = await supabase
         .from('partner_inquiries')
@@ -54,37 +55,31 @@ export default function PartnerInquiryModal({ onClose }: Props) {
         <button className="modal-close" onClick={onClose} aria-label="Close">✕</button>
 
         {status === 'success' ? (
-          <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🤝</div>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 800, marginBottom: '0.75rem' }}>
-              Inquiry Received
-            </h2>
-            <p style={{ color: 'var(--slate-400)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-              Thanks, {form.contact_name || 'there'}. We'll come back to you at{' '}
-              <strong style={{ color: 'var(--green-400)' }}>{form.contact_email}</strong>{' '}
-              with specifics on school locations, estimated volumes, and pilot partnership terms.
+          <div className="success-wrap">
+            <div className="success-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+            </div>
+            <h2 className="success-title">Inquiry Received</h2>
+            <p className="success-text">
+              Thanks, <strong>{form.contact_name || 'there'}</strong>. We'll come back to you at{' '}
+              <strong>{form.contact_email}</strong> with specifics on school locations, estimated volumes, and pilot partnership terms.
             </p>
             <button className="btn btn-primary" onClick={onClose}>Done</button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 800, marginBottom: '0.35rem' }}>
-                Partnership Inquiry
-              </h2>
-              <p style={{ fontSize: '0.875rem', color: 'var(--slate-400)' }}>
-                We're actively seeking our first recycling company partner. Tell us about your operation
-                and we'll come back with what a pilot looks like.
-              </p>
-            </div>
+          <form onSubmit={handleSubmit}>
+            <h2 className="modal-title">Partnership Inquiry</h2>
+            <p className="modal-sub">
+              We're actively seeking our first recycling company partner. Tell us about your operation and we'll come back with what a pilot looks like.
+            </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row">
               <div className="form-group">
-                <label className="form-label">Company Name *</label>
+                <label className="form-label">Company Name <span className="required">*</span></label>
                 <input className="form-input" required placeholder="e.g. Zoomlion Ghana Ltd" value={form.company_name} onChange={set('company_name')} />
               </div>
               <div className="form-group">
-                <label className="form-label">Company Type *</label>
+                <label className="form-label">Company Type <span className="required">*</span></label>
                 <select className="form-select" required value={form.company_type} onChange={set('company_type')}>
                   <option value="">Select type</option>
                   {COMPANY_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
@@ -97,25 +92,23 @@ export default function PartnerInquiryModal({ onClose }: Props) {
               <input className="form-input" placeholder="e.g. Ashanti, Greater Accra, Central" value={form.operating_regions} onChange={set('operating_regions')} />
             </div>
 
-            <hr style={{ border: 'none', borderTop: '1px solid var(--border)' }} />
-            <p style={{ fontSize: '0.8rem', color: 'var(--slate-500)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-              Your Contact Details
-            </p>
+            <hr className="form-divider" />
+            <div className="form-section-label">Your Contact Details</div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row">
               <div className="form-group">
-                <label className="form-label">Full Name *</label>
+                <label className="form-label">Full Name <span className="required">*</span></label>
                 <input className="form-input" required placeholder="Name" value={form.contact_name} onChange={set('contact_name')} />
               </div>
               <div className="form-group">
-                <label className="form-label">Your Role *</label>
+                <label className="form-label">Your Role <span className="required">*</span></label>
                 <input className="form-input" required placeholder="e.g. Business Development Manager" value={form.contact_role} onChange={set('contact_role')} />
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+            <div className="form-row">
               <div className="form-group">
-                <label className="form-label">Email *</label>
+                <label className="form-label">Email <span className="required">*</span></label>
                 <input className="form-input" type="email" required placeholder="you@company.com" value={form.contact_email} onChange={set('contact_email')} />
               </div>
               <div className="form-group">
@@ -131,21 +124,18 @@ export default function PartnerInquiryModal({ onClose }: Props) {
                 placeholder="Your current collection capacity, types of materials you process, questions about the model…"
                 value={form.message}
                 onChange={set('message')}
-                style={{ minHeight: '100px' }}
+                style={{ minHeight: '90px' }}
               />
             </div>
 
             {error && (
-              <p style={{ color: '#f87171', fontSize: '0.875rem', background: 'rgba(248,113,113,0.1)', padding: '0.75rem', borderRadius: 'var(--radius-sm)' }}>
-                {error}
-              </p>
+              <div className="form-error">{error}</div>
             )}
 
             <button
-              className="btn btn-primary"
+              className="btn btn-primary submit-btn"
               type="submit"
               disabled={status === 'submitting'}
-              style={{ width: '100%', justifyContent: 'center', opacity: status === 'submitting' ? 0.7 : 1 }}
             >
               {status === 'submitting' ? 'Sending…' : 'Send Inquiry'}
             </button>

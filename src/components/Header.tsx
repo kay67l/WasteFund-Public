@@ -30,11 +30,11 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
           </a>
 
           <nav className="header-nav">
-            <a href="#how-it-works">How It Works</a>
-            <a href="#for-schools">For Schools</a>
-            <a href="#programs">Programs</a>
-            <a href="#for-partners">For Partners</a>
-            <a href="#impact">Impact</a>
+            <a href="#how-it-works">01. How It Works</a>
+            <a href="#for-schools">02. For Schools</a>
+            <a href="#programs">03. Programs</a>
+            <a href="#for-partners">04. For Partners</a>
+            <a href="#impact">05. Impact</a>
           </nav>
 
           <div className="header-actions">
@@ -63,8 +63,8 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
           <div className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`}>
             <button onClick={() => setMenuOpen(false)} aria-label="Close menu">&times;</button>
             <nav>
-              {['How It Works', 'For Schools', 'Programs', 'For Partners', 'Impact'].map(item => (
-                <a key={item} href={`#${item.toLowerCase().replace(/ /g, '-')}`} onClick={() => setMenuOpen(false)}>
+              {['01. How It Works', '02. For Schools', '03. Programs', '04. For Partners', '05. Impact'].map(item => (
+                <a key={item} href={`#${item.split('. ')[1].toLowerCase().replace(/ /g, '-')}`} onClick={() => setMenuOpen(false)}>
                   {item}
                 </a>
               ))}

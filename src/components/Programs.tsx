@@ -1,3 +1,10 @@
+import type { FC } from 'react'
+
+interface ProgramsProps {
+  onRegisterSchool: () => void
+  onPartnerInquiry: () => void
+}
+
 const programs = [
   {
     name: 'School Registration',
@@ -12,7 +19,7 @@ const programs = [
     image: 'https://images.unsplash.com/photo-1772419186959-fdb8cc37e149?w=500&h=360&fit=crop&auto=format',
     imageAlt: 'Students in a Ghanaian classroom',
     cta: 'Register Your School',
-    ctaOnClick: 'register',
+    ctaOnClick: 'register' as const,
   },
   {
     name: 'Recycling Partnership',
@@ -27,7 +34,7 @@ const programs = [
     image: 'https://images.unsplash.com/photo-1761479578277-b11d0092699d?w=500&h=360&fit=crop&auto=format',
     imageAlt: 'Garbage truck collecting waste',
     cta: 'Send Partnership Inquiry',
-    ctaOnClick: 'partner',
+    ctaOnClick: 'partner' as const,
   },
   {
     name: 'Community Composting',
@@ -42,31 +49,25 @@ const programs = [
     image: 'https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=500&h=360&fit=crop&auto=format',
     imageAlt: 'Green leaf representing organic waste composting',
     cta: 'Join Waitlist',
-    ctaOnClick: 'waitlist',
+    ctaOnClick: 'waitlist' as const,
     disabled: true,
   },
 ]
 
-interface ProgramsProps {
-  onRegisterSchool: () => void
-  onPartnerInquiry: () => void
-}
-
-export default function Programs({ onRegisterSchool, onPartnerInquiry }: ProgramsProps) {
+const Programs: FC<ProgramsProps> = ({ onRegisterSchool, onPartnerInquiry }) => {
   return (
-    <section id="programs" className="section programs-section">
+    <section id="programs" className="section">
       <div className="container">
-        {/* Header */}
-        <div className="programs-header">
-          <div className="programs-label">Our Programs</div>
-          <h2 className="programs-title">Pick the program that fits.</h2>
-          <p className="programs-sub">
-            Whether you\'re a school, a recycling company, or a community organisation —
+        <div className="section-header">
+          <div className="section-number">03</div>
+          <div className="section-label">Programs</div>
+          <h2 className="section-title">Pick the program that fits.</h2>
+          <p className="section-sub">
+            Whether you're a school, a recycling company, or a community organisation —
             Wastefund has a starting point for you.
           </p>
         </div>
 
-        {/* Cards */}
         <div className="programs-grid">
           {programs.map((p, i) => (
             <div key={i} className="program-card">
@@ -92,7 +93,7 @@ export default function Programs({ onRegisterSchool, onPartnerInquiry }: Program
                         : onPartnerInquiry
                   }
                   disabled={p.disabled}
-                  style={p.disabled ? { opacity: 0.5, cursor: 'not-allowed', background: 'transparent', border: '1.5px solid var(--ink-4)', color: 'var(--ink-4)' } : {}}
+                  style={p.disabled ? { opacity: 0.5, cursor: 'not-allowed', background: 'transparent', border: '1.5px solid #ccc', color: '#999' } : {}}
                 >
                   {p.cta}
                 </button>
@@ -104,3 +105,5 @@ export default function Programs({ onRegisterSchool, onPartnerInquiry }: Program
     </section>
   )
 }
+
+export default Programs
