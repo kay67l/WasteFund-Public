@@ -17,14 +17,12 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
 
   return (
     <>
-      {/* Top Bar */}
       <div className="top-bar">
         <div className="container">
           Free registration &middot; Pilot open to 5 schools in Ashanti Region
         </div>
       </div>
 
-      {/* Header */}
       <header className={`header ${scrolled ? 'scrolled' : ''}`}>
         <div className="header-inner">
           <a href="/" className="header-logo">
@@ -40,10 +38,10 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
           </nav>
 
           <div className="header-actions">
-            <button className="btn btn-secondary" style={{ fontSize: '0.8rem', padding: '0.45rem 1rem' }} onClick={onPartnerInquiry}>
+            <button className="btn btn-ghost btn-sm" onClick={onPartnerInquiry}>
               Partner With Us
             </button>
-            <button className="btn btn-primary" style={{ fontSize: '0.8rem', padding: '0.45rem 1rem' }} onClick={onRegisterSchool}>
+            <button className="btn btn-primary btn-sm" onClick={onRegisterSchool}>
               Register School
             </button>
           </div>
@@ -51,7 +49,6 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
           <button
             className="mobile-menu-btn"
             onClick={() => setMenuOpen(!menuOpen)}
-            style={{ background: 'none', border: 'none', color: 'var(--ink)', fontSize: '1.5rem', cursor: 'pointer', display: 'none', padding: '0.25rem', marginLeft: '0.5rem' }}
             aria-label="Menu"
           >
             {menuOpen ? (
@@ -64,19 +61,10 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
 
         {menuOpen && (
           <div className={`mobile-menu-overlay ${menuOpen ? 'open' : ''}`}>
-            <button
-              onClick={() => setMenuOpen(false)}
-              style={{ position: 'absolute', top: '1.25rem', right: '1.5rem', background: 'none', border: 'none', fontSize: '1.5rem', cursor: 'pointer', color: 'var(--ink)' }}
-            >
-              &times;
-            </button>
+            <button onClick={() => setMenuOpen(false)} aria-label="Close menu">&times;</button>
             <nav>
               {['How It Works', 'For Schools', 'Programs', 'For Partners', 'Impact'].map(item => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/ /g, '-')}`}
-                  onClick={() => setMenuOpen(false)}
-                >
+                <a key={item} href={`#${item.toLowerCase().replace(/ /g, '-')}`} onClick={() => setMenuOpen(false)}>
                   {item}
                 </a>
               ))}
@@ -85,20 +73,12 @@ export default function Header({ onRegisterSchool, onPartnerInquiry }: HeaderPro
               <button className="btn btn-primary" onClick={() => { onRegisterSchool(); setMenuOpen(false) }}>
                 Register School
               </button>
-              <button className="btn btn-secondary" onClick={() => { onPartnerInquiry(); setMenuOpen(false) }}>
+              <button className="btn btn-ghost" onClick={() => { onPartnerInquiry(); setMenuOpen(false) }}>
                 Partner With Us
               </button>
             </div>
           </div>
         )}
-
-        <style>{`
-          @media (max-width: 768px) {
-            .header-nav { display: none !important; }
-            .header-actions { display: none !important; }
-            .mobile-menu-btn { display: block !important; }
-          }
-        `}</style>
       </header>
     </>
   )
